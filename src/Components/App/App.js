@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
 import getData from './fetchDataApi.js'
+import Actor from '../Actor/Actor.js'
+import Movielist from '../Movielist/Movielist.js'
 class App extends Component {
   constructor(props) {
     super(props)
@@ -10,10 +12,10 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    const actorArray = [], movieArray = []
+    console.log('did mount')
+    const actorArray = []
     getData().then((res) => {
       let ctr = 0
-      movieArray.push(res.data)
       res.data.forEach((item) => {
         let tempArr = (item.actors)
         for (let iter1 = 0; iter1 < tempArr.length; iter1++) {
@@ -32,17 +34,26 @@ class App extends Component {
       })
       this.setState({
         actors: actorArray,
-        movies: movieArray
+        movies: res.data
       })
     })
   }
+  updateMovieList(actor) {
+    const prevMovies = this.state.movies
+    console.log(prevMovies)
+  }
   render() {
-    return (
-      <div>
-        <Actor actors={this.props.actors} onChange={this.updateMovieList.bind(this)} />
-
-      </div>
-    )
+    console.log('1', this.state.actors)
+    if (this.state.actors.length === 0)
+      return (<div>Loading....</div>)
+    else {
+      return (
+        <div>
+          <Actor actors={this.state.actors} onChange={this.updateMovieList.bind(this)} />
+          <Movielist movies={this.state.movies}/>
+        </div>
+      )
+    }
   }
 }
 
