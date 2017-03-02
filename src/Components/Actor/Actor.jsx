@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
+import './Actor.css'
 class Actor extends Component {
   showMovies(e){
-    console.log('3',e.target.value)
     this.props.change(e.target.value)
   }
   render() {
     const allActors = this.props.actors.map((actor) => <option key={actor}>{actor}</option>)
     return (
-      <select onChange={this.showMovies.bind(this)}>
+      <div>
+      <h4>Filter by Actor : </h4>
+      <select className='choose' onChange={this.showMovies.bind(this)}>
         {allActors}
       </select>
+      </div>
     )
   }
 }

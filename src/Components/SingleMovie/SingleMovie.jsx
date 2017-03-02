@@ -9,13 +9,13 @@ class SingleMovie extends Component {
         <div style={{ backgroundColor: this.props.movie.theme }}>
         </div>
         <div >
-          Name : {this.props.movie.name}<br />
-          Description : {this.props.movie.description}<br />
-          Release Date : {moment(this.props.movie.releaseDate).format('MMMM D YYYY')}
+          <h3>{this.props.movie.name}</h3><br />
+          <p class='description'>{this.props.movie.description}</p><br />
+          Release Date : {moment(this.props.movie.releaseDate).format('DD MMMM YYYY')}
           <br /><br />
         </div>
         <div>
-          <Rating stars = {this.props.movie.rating} />
+          <Rating stars={this.props.movie.rating} />
         </div>
       </div>
     )

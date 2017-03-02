@@ -13,7 +13,6 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    console.log('did mount')
     const actorArray = []
     getData().then((res) => {
       let ctr = 0
@@ -40,7 +39,6 @@ class App extends Component {
     })
   }
   updateMovieList(actor) {
-    let prevState = this.state.movies
     let searchedMovies = []
     this.state.movies.forEach((movie) => {
       const actorArr = movie.actors
@@ -54,7 +52,6 @@ class App extends Component {
       if (flag)
         searchedMovies.push(movie)
     })
-    console.log('2', searchedMovies)
     this.setState({
       filteredMovies: searchedMovies
     })
@@ -68,6 +65,7 @@ class App extends Component {
 
     if (this.state.actors.length === 0)
       return (<div>Loading....</div>)
+
     return (
       <div>
         <Actor actors={this.state.actors} change={this.updateMovieList.bind(this)} />
