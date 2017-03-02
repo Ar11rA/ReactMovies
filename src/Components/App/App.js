@@ -14,7 +14,7 @@ class App extends Component {
   }
   componentDidMount() {
     const actorArray = []
-    getData().then((res) => {
+    getData('movies').then((res) => {
       let ctr = 0
       res.data.forEach((item) => {
         let tempArr = (item.actors)
