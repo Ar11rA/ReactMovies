@@ -12,7 +12,8 @@ class Rating extends Component {
     else
       colorClass = 'green'
     return (
-      <span className={colorClass}>{this.props.stars}/5</span>
+      <p> Rating is  <span className={colorClass}>{this.props.stars}/5</span>
+      </p>
     )
   }
 }
