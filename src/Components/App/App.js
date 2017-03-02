@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
 import getData from './fetchDataApi.js'
-import Actor from '../Actor/Actor.js'
-import Movielist from '../Movielist/Movielist.js'
+import Actor from '../Actor/Actor.jsx'
+import Movielist from '../Movielist/Movielist.jsx'
 class App extends Component {
   constructor(props) {
     super(props)

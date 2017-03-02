@@ -1,0 +1,21 @@
+#main {
+    width: 50%;
+    
+    border: 1px solid #c3c3c3;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+#main div {
+    -webkit-flex-grow: 1; /* Safari 6.1+ */
+    -webkit-flex-shrink: 1; /* Safari 6.1+ */
+    -webkit-flex-basis: 100px; /* Safari 6.1+ */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100px;
+}
+
+#main div:nth-child(1) {
+    -webkit-flex-shrink: 10; /* Safari 6.1+ */
+    flex-shrink: 10;
+}
