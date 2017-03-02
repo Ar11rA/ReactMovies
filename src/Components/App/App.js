@@ -8,7 +8,8 @@ class App extends Component {
     super(props)
     this.state = {
       actors: [],
-      movies: []
+      movies: [],
+      filteredMovies: []
     }
   }
   componentDidMount() {
@@ -55,21 +56,24 @@ class App extends Component {
     })
     console.log('2', searchedMovies)
     this.setState({
-      movies: searchedMovies
+      filteredMovies: searchedMovies
     })
   }
   render() {
-    // console.log('1', this.state.actors)
+    let movielist = ''
+    if (this.state.filteredMovies.length)
+      movielist = <Movielist movies={this.state.filteredMovies} />
+    else
+      movielist = <Movielist movies={this.state.movies} />
+
     if (this.state.actors.length === 0)
       return (<div>Loading....</div>)
     return (
       <div>
         <Actor actors={this.state.actors} change={this.updateMovieList.bind(this)} />
-        <Movielist movies={this.state.movies} />
+        {movielist}
       </div>
     )
   }
 }
-
-
 export default App
