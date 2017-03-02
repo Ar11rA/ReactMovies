@@ -39,22 +39,37 @@ class App extends Component {
     })
   }
   updateMovieList(actor) {
-    const prevMovies = this.state.movies
-    console.log(prevMovies)
+    let prevState = this.state.movies
+    let searchedMovies = []
+    this.state.movies.forEach((movie) => {
+      const actorArr = movie.actors
+      let flag = false
+      for (let iter = 0; iter < actorArr.length; iter++) {
+        if (actor === actorArr[iter]) {
+          flag = true
+          break
+        }
+      }
+      if (flag)
+        searchedMovies.push(movie)
+    })
+    console.log('2', searchedMovies)
+    this.setState({
+      movies: searchedMovies
+    })
   }
   render() {
-    console.log('1', this.state.actors)
+    // console.log('1', this.state.actors)
     if (this.state.actors.length === 0)
       return (<div>Loading....</div>)
-    else {
-      return (
-        <div>
-          <Actor actors={this.state.actors} onChange={this.updateMovieList.bind(this)} />
-          <Movielist movies={this.state.movies}/>
-        </div>
-      )
-    }
+    return (
+      <div>
+        <Actor actors={this.state.actors} change={this.updateMovieList.bind(this)} />
+        <Movielist movies={this.state.movies} />
+      </div>
+    )
   }
 }
+
 
 export default App
