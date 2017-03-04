@@ -52,20 +52,34 @@ class App extends Component {
       if (flag)
         searchedMovies.push(movie)
     })
+    if (actor === 'All') {
+      this.setState({
+        filteredMovies: this.state.movies
+      })
+    }
     this.setState({
       filteredMovies: searchedMovies
     })
   }
   render() {
+    if (this.state.actors.length === 0) {
+      return (<div id="bigloading">
+        <div id="loading">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <div id="lefthalf"></div>
+        <div id="righthalf"></div>
+      </div>)
+    }
     let movielist = ''
     if (this.state.filteredMovies.length)
       movielist = <Movielist movies={this.state.filteredMovies} />
     else
       movielist = <Movielist movies={this.state.movies} />
-
-    if (this.state.actors.length === 0)
-      return (<div>Loading....</div>)
-
     return (
       <div>
         <Actor actors={this.state.actors} change={this.updateMovieList.bind(this)} />

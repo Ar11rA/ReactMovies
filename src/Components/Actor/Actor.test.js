@@ -24,7 +24,7 @@ it('renders a select tag with actors as options', () => {
   const actorArr = ['billy','joel','kevin','jane']
   const mockFunction = () => 1
   const app = shallow(<Actor actors={actorArr} change={mockFunction}/>)
-  expect(app.find('select').text()).toBe('billyjoelkevinjane')
+  expect(app.find('select').text()).toBe('Allbillyjoelkevinjane')
 })
 
 

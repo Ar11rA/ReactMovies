@@ -7,8 +7,12 @@ it('has a span', () => {
   expect(app.find('span').length).toBe(1)
 })
 it('will print the received prop value and show it as a rating on 5', () => {
-  const app = shallow(<Rating stars={3} />)
-  expect(app.find('span').text()).toBe('3/5')
+  const app = shallow(<Rating stars={3.5} />)
+  expect(app.find('span').text()).toBe('3.5/5')
+})
+it('will print the received prop value and show it as a rating on 5', () => {
+  const app = shallow(<Rating stars={2} />)
+  expect(app.find('span').text()).toBe('2/5')
 })
 it('will have class red when rating is less than equal to 2', () => {
   const app = shallow(<Rating stars={2} />)
