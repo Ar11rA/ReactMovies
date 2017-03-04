@@ -7,8 +7,10 @@ const Rating = (props) => {
     colorClass = 'red'
   else if (rating > 2 && rating <= 4)
     colorClass = 'blue'
-  else
+  else if (rating === 5)
     colorClass = 'green'
+  else
+    colorClass = ''
   return (
     <p className='center-rating'> Rating is  <span className={colorClass}>{props.stars}/5</span>
     </p>

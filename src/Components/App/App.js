@@ -13,43 +13,24 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    const actorArray = []
     getData('movies').then((res) => {
-      let ctr = 0
+      let actorArr = []
       res.data.forEach((item) => {
-        let tempArr = (item.actors)
-        for (let iter1 = 0; iter1 < tempArr.length; iter1++) {
-          let tempAct = tempArr[iter1]
-          let flag = true
-          for (let iter2 = 0; iter2 < actorArray.length; iter2++) {
-            if (tempAct === actorArray[iter2]) {
-              flag = false
-              break
-            }
-          }
-          if (flag) {
-            actorArray[ctr++] = tempAct
-          }
-        }
+        actorArr.push(...new Set(item.actors))
       })
+      actorArr = [...new Set(actorArr)]
       this.setState({
-        actors: actorArray,
+        actors: actorArr,
         movies: res.data
       })
     })
+
   }
   updateMovieList(actor) {
     let searchedMovies = []
     this.state.movies.forEach((movie) => {
       const actorArr = movie.actors
-      let flag = false
-      for (let iter = 0; iter < actorArr.length; iter++) {
-        if (actor === actorArr[iter]) {
-          flag = true
-          break
-        }
-      }
-      if (flag)
+      if (actorArr.some(((elem) => actor === elem)))
         searchedMovies.push(movie)
     })
     if (actor === 'All') {
