@@ -1,4 +1,4 @@
-import React from 'react'
+import React  from 'react'
 import moment from 'moment'
 import './SingleMovie.css'
 import Rating from '../Rating/Rating.jsx'

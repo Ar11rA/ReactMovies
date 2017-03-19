@@ -15,5 +15,6 @@ const Rating = (props) => {
     <p className='center-rating'> Rating is  <span className={colorClass}>{props.stars}/5</span>
     </p>
   )
+
 }
 export default Rating
