@@ -27,5 +27,3 @@ it('renders a select tag with actors as options', () => {
   expect(app.find('select').text()).toBe('Allbillyjoelkevinjane')
 })
 
-
-
